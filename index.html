@@ -8,9 +8,136 @@
     <meta name="theme-color" content="#00124D" />
     <link rel="manifest" href="./manifest.json" />
     <title>Portal do Cliente - VTMCred</title>
+    
+    <!-- Tailwind play CDN allows clean CSS styling with custom configuration directly in the sandbox -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              'royal-blue': '#1E51C8',
+              'royal-blue-light': '#3266E4',
+            },
+            fontFamily: {
+              sans: ['Inter', 'system-ui', '-apple-system', 'sans-serif'],
+              display: ['Space Grotesk', 'system-ui', '-apple-system', 'sans-serif'],
+            }
+          }
+        }
+      }
+    </script>
+
+    <!-- Lucide CDN loads lightweight vector icon structures on request -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+
+    <!-- Project Styles -->
+    <link rel="stylesheet" href="./style.css" />
   </head>
   <body class="bg-[#0D1117] w-full h-full overflow-hidden select-none">
-    <div id="root"></div>
-    <script type="module" src="src/main.tsx"></script>
+    
+    <!-- 1. General Viewport Wrapper -->
+    <main 
+      id="main-viewport-container"
+      class="hero"
+    >
+      <div class="hero-content">
+        <!-- 2. Logo Header Section with Premium Sequence Entrance animations -->
+        <header class="relative z-10 flex flex-col items-center justify-center pt-16 px-6 text-center select-none">
+          <div class="flex items-center gap-3.5 h-[52px]">
+            <!-- Vertical royal-blue bar: grows bottom-to-top -->
+            <div class="logo-bar w-1.5 h-11 bg-[#1E51C8] rounded-full shadow-[0_0_12px_rgba(30,81,200,0.3)]"></div>
+
+            <!-- Logo title container mapping the exact reveal parameters -->
+            <h1 id="brand-logo" class="font-sans font-extrabold text-[#ffffff] tracking-tight text-[44px] leading-none select-none flex items-center">
+              <span class="logo-text pr-1">VTMCred</span>
+              <span class="logo-dot text-[#1E51C8] font-black font-display inline-block translate-y-0.5">.</span>
+            </h1>
+          </div>
+        </header>
+
+        <!-- 3. Bottom Action Footer Section -->
+        <footer class="relative z-10 w-full max-w-md mx-auto px-6 pb-12 sm:pb-16 flex flex-col items-center">
+          <div class="footer-cta w-full space-y-4">
+            <!-- Primary Action Button: Acessar minha conta -->
+            <button
+              id="acessar-conta-cta-btn"
+              class="w-full flex items-center justify-center h-12 bg-royal-blue text-white font-semibold text-base rounded-2xl hover:bg-royal-blue-light border-0 shadow-lg shadow-royal-blue/30 active:scale-[0.98] transition-all duration-200 cursor-pointer focus:outline-none focus:ring-4 focus:ring-royal-blue/30"
+            >
+              Acessar minha conta
+            </button>
+
+            <!-- Secondary Action Button: Criar cadastro -->
+            <button
+              id="criar-cadastro-cta-btn"
+              class="w-full flex items-center justify-center h-12 bg-white/10 hover:bg-white/15 text-white font-semibold text-base rounded-2xl border border-white/30 hover:border-white/50 backdrop-blur-md active:scale-[0.98] transition-all duration-200 cursor-pointer focus:outline-none focus:ring-4 focus:ring-white/10"
+            >
+              Criar cadastro
+            </button>
+          </div>
+
+          <!-- Compliance credit annotation -->
+          <p class="footer-copy text-[10px] text-white/35 font-mono mt-8 uppercase tracking-wider text-center select-none">
+            © <span id="current-year">2026</span> VTMCred Sociedade de Crédito
+          </p>
+        </footer>
+      </div>
+
+      <!-- 4. Pure HTML Bottom Sheet Overlay Stack -->
+      <div id="bottom-sheet" class="fixed inset-0 z-50 flex items-end justify-center pointer-events-none">
+        
+        <!-- Dark overlay backdrop -->
+        <div 
+          id="sheet-backdrop" 
+          class="absolute inset-0 bg-black opacity-0 pointer-events-none cursor-pointer transition-opacity duration-300"
+          aria-hidden="true"
+        ></div>
+
+        <!-- Content card drawer slide container -->
+        <div 
+          id="sheet-container"
+          class="relative w-full max-w-md bg-white rounded-t-[2.5rem] shadow-2xl z-10 overflow-hidden flex flex-col max-h-[85vh] sm:max-h-[80vh] border-t border-gray-100 transform translate-y-full sheet-container-transition pointer-events-auto"
+        >
+          <!-- Elegant mobile pill drawer pull handle -->
+          <div id="sheet-handle" class="flex justify-center pt-4 pb-2 cursor-pointer">
+            <div class="w-12 h-1 bg-gray-200 rounded-full"></div>
+          </div>
+
+          <!-- Absolute Close Header Button -->
+          <button
+            id="close-bottom-sheet-btn"
+            class="absolute top-4 right-6 p-2 rounded-full text-gray-400 hover:text-gray-600 hover:bg-gray-100 transition-colors focus:outline-none focus:ring-2 focus:ring-royal-blue/20"
+            aria-label="Fechar"
+          >
+            <i data-lucide="x" class="w-5 h-5"></i>
+          </button>
+
+          <!-- Inner scrollable dynamic HTML insert slot -->
+          <div id="sheet-content" class="overflow-y-auto px-6 pb-8 pt-2 scrollbar-thin">
+            <!-- Populates dynamically inside script.js -->
+          </div>
+        </div>
+      </div>
+
+      <!-- 5. Premium Feedback Toast popups (Top anchor) -->
+      <div 
+        id="toast"
+        class="hidden fixed top-6 left-4 right-4 z-[999] mx-auto max-w-sm bg-[#0D1117] border border-royal-blue/30 shadow-2xl p-4 rounded-2xl items-start gap-3 transition-all duration-400 opacity-0 -translate-y-4"
+      >
+        <div id="toast-icon"></div>
+        <div class="flex-1">
+          <p id="toast-title" class="text-xs font-bold text-white uppercase tracking-wider font-mono">
+            Notificação VTM
+          </p>
+          <p id="toast-text" class="text-xs text-white/90 mt-1 font-medium leading-relaxed">
+            Ação executada com sucesso.
+          </p>
+        </div>
+      </div>
+
+    </main>
+
+    <!-- Controller scripts -->
+    <script src="./script.js"></script>
   </body>
 </html>

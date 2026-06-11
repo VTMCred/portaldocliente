@@ -47,7 +47,7 @@ body {
 .hero {
   min-height: 100dvh;
   width: 100%;
-  background: linear-gradient(135deg, #002BFF 0%, #00124D 45%, #020617 100%);
+  background-image: url("./assets/background.jpg.png");
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
