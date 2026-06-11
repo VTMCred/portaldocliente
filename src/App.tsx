@@ -111,7 +111,7 @@ export default function App() {
   }
 
   return (
-    <div className="hero" style={{ backgroundImage: `url(${backgroundImage})` }}>
+    <div className="hero">
       <div className="hero-content">
         {/* 1. Top Section: App name centered with generous padding and space */}
         <header className="flex flex-col items-center justify-center text-center select-none pt-4">
