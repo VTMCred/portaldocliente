@@ -1,0 +1,20 @@
+{
+  "name": "VTMCred Portal do Cliente",
+  "short_name": "VTMCred",
+  "start_url": "./index.html",
+  "display": "standalone",
+  "background_color": "#00124D",
+  "theme_color": "#00124D",
+  "icons": [
+    {
+      "src": "./assets/background.jpg.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "./assets/background.jpg.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}

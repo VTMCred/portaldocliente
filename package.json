@@ -5,7 +5,7 @@
   "type": "module",
   "scripts": {
     "dev": "vite --port=3000 --host=0.0.0.0",
-    "build": "mkdir -p dist && cp -r assets index.html style.css script.js dist/",
+    "build": "mkdir -p dist && cp -r assets index.html style.css script.js manifest.json dist/",
     "preview": "vite preview",
     "clean": "rm -rf dist server.js",
     "lint": "echo 'Style checking bypassed'"
