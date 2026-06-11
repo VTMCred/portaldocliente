@@ -1,0 +1,6 @@
+{
+  "name": "Portal VTMCred",
+  "description": "Tela inicial premium, limpa e moderna do Portal VTMCred com bottom sheets animados para login e cadastro estilo aplicativo financeiro.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
