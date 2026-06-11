@@ -145,10 +145,16 @@ function openSheet(type) {
   // Prevent scroll
   document.body.style.overflow = 'hidden';
 
+  // Toggle active helper classes to fully materialize the bottom sheet
+  backdrop.classList.add('active');
+  sheetContainer.classList.add('active');
+
   // Make bottom sheet interaction block visible
   const parentSheet = document.getElementById('bottom-sheet');
-  parentSheet.classList.remove('pointer-events-none');
-  parentSheet.classList.add('pointer-events-auto');
+  if (parentSheet) {
+    parentSheet.classList.remove('pointer-events-none');
+    parentSheet.classList.add('pointer-events-auto');
+  }
 
   // Trigger smooth transitions
   backdrop.classList.remove('pointer-events-none', 'opacity-0');
@@ -158,7 +164,9 @@ function openSheet(type) {
   sheetContainer.classList.add('translate-y-0');
 
   // Smooth cinematic dim image and overlay (User requirement)
-  dimOverlay.style.backgroundColor = 'rgba(0,0,0,0.58)';
+  if (dimOverlay) {
+    dimOverlay.style.backgroundColor = 'rgba(0,0,0,0.58)';
+  }
   if (bgImage) {
     bgImage.classList.add('brightness-[0.45]');
   }
@@ -172,6 +180,10 @@ function closeActiveSheet() {
   // Restore scroll
   document.body.style.overflow = '';
 
+  // Deactivate helper classes to slide down sheet
+  backdrop.classList.remove('active');
+  sheetContainer.classList.remove('active');
+
   // Trigger reverse transitions
   backdrop.classList.remove('pointer-events-auto', 'opacity-60');
   backdrop.classList.add('pointer-events-none', 'opacity-0');
@@ -180,7 +192,9 @@ function closeActiveSheet() {
   sheetContainer.classList.add('translate-y-full');
 
   // Smooth cinematic back to glowing standard (User requirement)
-  dimOverlay.style.backgroundColor = 'rgba(0,0,0,0.18)';
+  if (dimOverlay) {
+    dimOverlay.style.backgroundColor = 'rgba(0,0,0,0.18)';
+  }
   if (bgImage) {
     bgImage.classList.remove('brightness-[0.45]');
   }
@@ -188,8 +202,10 @@ function closeActiveSheet() {
   // Hide the parent block after completion of slide down transition
   setTimeout(() => {
     const parentSheet = document.getElementById('bottom-sheet');
-    parentSheet.classList.add('pointer-events-none');
-    parentSheet.classList.remove('pointer-events-auto');
+    if (parentSheet) {
+      parentSheet.classList.add('pointer-events-none');
+      parentSheet.classList.remove('pointer-events-auto');
+    }
     
     // Clear temp values
     transitionCpf = '';

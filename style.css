@@ -75,7 +75,7 @@ body {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  padding: 80px 32px 48px;
+  padding: 24px 24px 16px;
 }
 
 .buttons-area {
@@ -208,3 +208,57 @@ button {
 .sheet-container-transition {
   transition: transform 350ms cubic-bezier(0.16, 1, 0.3, 1);
 }
+
+/* Hard specifications for premium Mobile-first Bottom Sheet */
+.bottom-sheet {
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  width: 100%;
+  min-height: 65dvh;
+  max-height: 90dvh;
+  background: #ffffff;
+  border-radius: 28px 28px 0 0;
+  transform: translateY(100%);
+  transition: transform 0.35s ease;
+  z-index: 9999;
+  overflow-y: auto;
+  padding: 28px 24px calc(28px + env(safe-area-inset-bottom));
+}
+
+@media (min-width: 640px) {
+  .bottom-sheet {
+    left: 50%;
+    right: auto;
+    width: 100%;
+    max-width: 448px; /* equivalent to max-w-md */
+    transform: translate(-50%, 100%);
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+  }
+}
+
+.bottom-sheet.active {
+  transform: translateY(0);
+}
+
+@media (min-width: 640px) {
+  .bottom-sheet.active {
+    transform: translate(-50%, 0);
+  }
+}
+
+.overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0);
+  z-index: 9998;
+  pointer-events: none;
+  transition: background-color 0.35s ease;
+}
+
+.overlay.active {
+  background: rgba(0,0,0,0.55);
+  pointer-events: auto;
+}
+

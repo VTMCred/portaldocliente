@@ -43,7 +43,7 @@
     >
       <div class="hero-content">
         <!-- 2. Logo Header Section with Premium Sequence Entrance animations -->
-        <header class="relative z-10 flex flex-col items-center justify-center pt-16 px-6 text-center select-none">
+        <header class="relative z-10 flex flex-col items-center justify-center pt-2 px-6 text-center select-none">
           <div class="flex items-center gap-3.5 h-[52px]">
             <!-- Vertical royal-blue bar: grows bottom-to-top -->
             <div class="logo-bar w-1.5 h-11 bg-[#1E51C8] rounded-full shadow-[0_0_12px_rgba(30,81,200,0.3)]"></div>
@@ -57,12 +57,12 @@
         </header>
 
         <!-- 3. Bottom Action Footer Section -->
-        <footer class="relative z-10 w-full max-w-md mx-auto px-6 pb-12 sm:pb-16 flex flex-col items-center">
-          <div class="footer-cta w-full space-y-4">
+        <footer class="relative z-10 w-full max-w-md mx-auto px-6 pb-4 sm:pb-6 flex flex-col items-center">
+          <div class="footer-cta w-full space-y-3">
             <!-- Primary Action Button: Acessar minha conta -->
             <button
               id="acessar-conta-cta-btn"
-              class="w-full flex items-center justify-center h-12 bg-royal-blue text-white font-semibold text-base rounded-2xl hover:bg-royal-blue-light border-0 shadow-lg shadow-royal-blue/30 active:scale-[0.98] transition-all duration-200 cursor-pointer focus:outline-none focus:ring-4 focus:ring-royal-blue/30"
+              class="w-full flex items-center justify-center h-10 bg-royal-blue text-white font-semibold text-sm rounded-xl hover:bg-royal-blue-light border-0 shadow-lg shadow-royal-blue/30 active:scale-[0.98] transition-all duration-200 cursor-pointer focus:outline-none focus:ring-4 focus:ring-royal-blue/30"
             >
               Acessar minha conta
             </button>
@@ -70,36 +70,36 @@
             <!-- Secondary Action Button: Criar cadastro -->
             <button
               id="criar-cadastro-cta-btn"
-              class="w-full flex items-center justify-center h-12 bg-white/10 hover:bg-white/15 text-white font-semibold text-base rounded-2xl border border-white/30 hover:border-white/50 backdrop-blur-md active:scale-[0.98] transition-all duration-200 cursor-pointer focus:outline-none focus:ring-4 focus:ring-white/10"
+              class="w-full flex items-center justify-center h-10 bg-white/10 hover:bg-white/15 text-white font-semibold text-sm rounded-xl border border-white/30 hover:border-white/50 backdrop-blur-md active:scale-[0.98] transition-all duration-200 cursor-pointer focus:outline-none focus:ring-4 focus:ring-white/10"
             >
               Criar cadastro
             </button>
           </div>
 
           <!-- Compliance credit annotation -->
-          <p class="footer-copy text-[10px] text-white/35 font-mono mt-8 uppercase tracking-wider text-center select-none">
+          <p class="footer-copy text-[10px] text-white/35 font-mono mt-6 uppercase tracking-wider text-center select-none">
             © <span id="current-year">2026</span> VTMCred Sociedade de Crédito
           </p>
         </footer>
       </div>
 
       <!-- 4. Pure HTML Bottom Sheet Overlay Stack -->
-      <div id="bottom-sheet" class="fixed inset-0 z-50 flex items-end justify-center pointer-events-none">
+      <div id="bottom-sheet" class="pointer-events-none">
         
         <!-- Dark overlay backdrop -->
         <div 
           id="sheet-backdrop" 
-          class="absolute inset-0 bg-black opacity-0 pointer-events-none cursor-pointer transition-opacity duration-300"
+          class="overlay cursor-pointer"
           aria-hidden="true"
         ></div>
 
         <!-- Content card drawer slide container -->
         <div 
           id="sheet-container"
-          class="relative w-full max-w-md bg-white rounded-t-[2.5rem] shadow-2xl z-10 overflow-hidden flex flex-col max-h-[85vh] sm:max-h-[80vh] border-t border-gray-100 transform translate-y-full sheet-container-transition pointer-events-auto"
+          class="bottom-sheet"
         >
           <!-- Elegant mobile pill drawer pull handle -->
-          <div id="sheet-handle" class="flex justify-center pt-4 pb-2 cursor-pointer">
+          <div id="sheet-handle" class="flex justify-center pb-2 cursor-pointer">
             <div class="w-12 h-1 bg-gray-200 rounded-full"></div>
           </div>
 
@@ -113,7 +113,7 @@
           </button>
 
           <!-- Inner scrollable dynamic HTML insert slot -->
-          <div id="sheet-content" class="overflow-y-auto px-6 pb-8 pt-2 scrollbar-thin">
+          <div id="sheet-content" class="mt-4">
             <!-- Populates dynamically inside script.js -->
           </div>
         </div>
