@@ -36,6 +36,13 @@ body {
   background-repeat: no-repeat;
 }
 
+#bg-image {
+  transform: scale(1.12) !important;
+  transform-origin: center top !important;
+  object-fit: cover !important;
+  object-position: center top !important;
+}
+
 /* Premium Sequence Entrance Animations */
 @keyframes growBar {
   0% {
